@@ -19,3 +19,10 @@ Most implementations of the extended Euclidean algorithm are recursive and can h
 ## Edge case
 
 Calling `extended_gcd(0, 0)` returns `(0, 0, 0)`. The gcd of two zeros is conventionally defined as zero, and any pair of coefficients satisfies the identity, so returning zeros keeps the result deterministic and simple to reason about.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
